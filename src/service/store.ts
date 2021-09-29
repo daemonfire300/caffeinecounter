@@ -1,4 +1,3 @@
-
 class BeverageStore {
 
     readonly storageKey: string = "beverageStore"
