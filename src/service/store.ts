@@ -1,4 +1,4 @@
-class BeverageStore {
+export class BeverageStore {
 
     readonly storageKey: string = "beverageStore"
 
