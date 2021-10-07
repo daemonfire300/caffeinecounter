@@ -1,10 +1,10 @@
-interface Beverage {
+export interface Beverage {
     name: string
-    caffeine: string
+    caffeine: number // in mg/100ml
 }
 
-interface Consumption {
-    amount: number
+export interface Consumption {
+    amount: number // in ml
     beverage: Beverage
     date: Date
 }
