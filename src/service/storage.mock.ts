@@ -8,7 +8,7 @@ export class StorageMock implements Storage {
         throw new Error("Method not implemented.");
     }
     getItem(key: string): string | null {
-        let val = this.data.get(key)
+        const val = this.data.get(key)
         if (val == undefined || val == null) {
             return null
         }
