@@ -30,6 +30,11 @@ const store = createStore({
             beverageStore.store(payload.amount, payload.beverage, payload.date)
             state.beverageData = beverageStore.loadStore()
         }
+    },
+    actions: {
+        add({ commit }, payload: Consumption) {
+            commit('add', payload)
+        }
     }
 })
 app.use(store)

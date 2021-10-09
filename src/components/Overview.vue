@@ -3,16 +3,18 @@
     <h1>Caffeine Counter</h1>
     <h3>- an amateurs vuejs project -</h3>
     <button @click="addStaticBeverage">add static</button>
+    <form-add></form-add>
     <list></list>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import FormAdd from "./FormAdd.vue";
 import List from "./List.vue";
 
 @Options({
-  components: { List },
+  components: { List, FormAdd },
   props: {
     msg: String,
   },
