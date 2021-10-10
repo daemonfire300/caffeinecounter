@@ -1,6 +1,5 @@
 <template>
   <form>
-    <h2>Add new beverage</h2>
     <label for="name">Name</label>
     <input v-model="name" name="name" type="text" placeholder="Club Mate" />
     <label for="amount">Amount</label>
