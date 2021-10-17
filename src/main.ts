@@ -3,7 +3,9 @@ import App from './App.vue'
 import { BeverageStore } from './service/store'
 import { Store, createStore } from 'vuex'
 import { Consumption } from './model/beverage'
+import router from './router/router'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './assets/sidebar.css'
 
 
 declare module '@vue/runtime-core' {
@@ -60,4 +62,5 @@ const store = createStore({
     }
 })
 app.use(store)
+app.use(router)
 app.mount('#app')

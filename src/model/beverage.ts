@@ -4,6 +4,7 @@ export interface Beverage {
 }
 
 export interface Consumption {
+    id: string
     amount: number // in ml
     beverage: Beverage
     date: Date

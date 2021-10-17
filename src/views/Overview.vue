@@ -5,23 +5,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <h1>Caffeine Counter</h1>
-        <h2>- an amateurs vuejs project -</h2>
-      </div>
-      <div class="row">
-        <div class="row">
-          <div class="col">
-            <span @click="toggleAddForm" v-if="!showAddForm" class="link"
-              >[+] Track new beverage</span
-            >
-            <span @click="toggleAddForm" v-if="showAddForm" class="link"
-              >[-] Track new beverage</span
-            >
-          </div>
-          <div class="col">
-            <form-add v-if="showAddForm"></form-add>
-          </div>
-        </div>
+        <h1>Overview</h1>
       </div>
       <div class="row">
         <div class="col">
@@ -34,15 +18,11 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import FormAdd from "./FormAdd.vue";
-import List from "./List.vue";
-import TotalCounter from "./TotalCounter.vue";
+import List from "../components/List.vue";
+import TotalCounter from "../components/TotalCounter.vue";
 
 @Options({
-  components: { List, FormAdd, TotalCounter },
-  props: {
-    msg: String,
-  },
+  components: { List, TotalCounter },
   data: () => {
     return {
       showAddForm: false,

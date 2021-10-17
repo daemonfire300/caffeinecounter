@@ -33,6 +33,7 @@ export default defineComponent({
         event.preventDefault();
       }
       let cons: Consumption = {
+        id: "",
         amount: this.amount,
         beverage: {
           name: this.name,

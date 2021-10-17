@@ -1,4 +1,5 @@
 import { Beverage, Consumption } from "@/model/beverage"
+import { v4 as uuidv4 } from 'uuid';
 
 export class BeverageStore {
 
@@ -12,6 +13,7 @@ export class BeverageStore {
 
     store(qty: number, ofBeverage: Beverage, at: Date) {
         const c: Consumption = {
+            id: uuidv4(),
             amount: qty,
             beverage: ofBeverage,
             date: at,
@@ -29,7 +31,7 @@ export class BeverageStore {
             this.setStore(store)
         } else {
             store = JSON.parse(raw)
-            store.map((value: Consumption|any): Consumption => {
+            store.map((value: Consumption | any): Consumption => {
                 if (value.date instanceof Date) {
                     return value
                 }

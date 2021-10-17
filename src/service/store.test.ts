@@ -8,7 +8,7 @@ test('loadEmptyStore', () => {
     expect(res).toStrictEqual(new Array<Consumption>())
 })
 
-test('storeAndAddTwoEntries', () => {
+test('storeAndAddOneEntry', () => {
     const st = new BeverageStore(new StorageMock)
     const bev: Beverage = {
         name: "Club Mate",
@@ -19,6 +19,7 @@ test('storeAndAddTwoEntries', () => {
     const res = st.loadStore()
     const expected: Array<Consumption> = [
         {
+            id: res[0].id,
             amount: 500,
             beverage: bev,
             date: now,
