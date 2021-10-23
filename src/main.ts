@@ -5,6 +5,7 @@ import { Store, createStore } from 'vuex'
 import { Consumption } from './model/beverage'
 import router from './router/router'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import * as bootstrap from 'bootstrap';
 import './assets/sidebar.css'
 
 

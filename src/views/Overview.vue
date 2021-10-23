@@ -2,6 +2,7 @@
   <div class="container">
     <div class="container">
       <div class="row"><total-counter></total-counter></div>
+      <hr />
     </div>
     <div class="container">
       <div class="row">

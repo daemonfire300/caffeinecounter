@@ -1,12 +1,42 @@
 <template>
   <form>
-    <label for="name">Name</label>
-    <input v-model="name" name="name" type="text" placeholder="Club Mate" />
-    <label for="amount">Amount</label>
-    <input v-model="amount" name="quantity" type="number" />
-    <label for="caffeine">Caffine mg/100ml</label>
-    <input v-model="caffeine" name="caffeine" type="number" />
-    <button @click="saveConsumption($event)" type="submit">Submit</button>
+    <div class="mb-3">
+      <label class="form-label" for="name">Name</label>
+      <input
+        v-model="name"
+        class="form-control"
+        name="name"
+        type="text"
+        placeholder="Club Mate"
+      />
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="amount">Amount</label>
+      <input
+        v-model="amount"
+        class="form-control"
+        name="quantity"
+        type="number"
+      />
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="caffeine">Caffine mg/100ml</label>
+      <input
+        v-model="caffeine"
+        class="form-control"
+        name="caffeine"
+        type="number"
+      />
+    </div>
+    <div class="col-auto">
+      <button
+        @click="saveConsumption($event)"
+        class="btn btn-primary mb-3"
+        type="submit"
+      >
+        Submit
+      </button>
+    </div>
   </form>
 </template>
 
