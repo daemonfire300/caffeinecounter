@@ -2,9 +2,9 @@
   <div class="list-group">
     <list-item
       v-for="(val, key) in consumedBeverages"
-      :key="val.date"
-      :href="'#/' + key"
-      :class="{ selected: visibility === key }"
+      :key="val.id"
+      :id="val.id"
+      :href="'#/' + val.id"
       @click="visibility = key"
       :beverage="val.beverage"
       :amount="val.amount"

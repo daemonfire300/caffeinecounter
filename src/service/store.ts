@@ -23,6 +23,14 @@ export class BeverageStore {
         this.db.setItem("beverageStore", JSON.stringify(data))
     }
 
+    removeItem(id: String) {
+        const data = this.loadStore()
+        const newData = data.filter((val: Consumption): Boolean => {
+            return val.id != id
+        })
+        this.db.setItem("beverageStore", JSON.stringify(newData))
+    }
+
     loadStore(): Array<Consumption> {
         let store: Array<Consumption>
         const raw: any = this.db.getItem(this.storageKey)

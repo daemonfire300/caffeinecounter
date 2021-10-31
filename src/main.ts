@@ -54,11 +54,25 @@ const store = createStore({
             state.totalCaffeine = data.reduce<number>((prev, curr): number => {
                 return prev + curr.beverage.caffeine;
             }, 0)
-        }
+        },
+        remove(state: any, payload: String) {
+            beverageStore.removeItem(payload)
+            const data = beverageStore.loadStore()
+            state.beverageData = data
+            /*state.totalFluids = data.reduce<number>((prev, curr): number => {
+                return prev + curr.amount;
+            }, 0)
+            state.totalCaffeine = data.reduce<number>((prev, curr): number => {
+                return prev + curr.beverage.caffeine;
+            }, 0)*/
+        },
     },
     actions: {
         add({ commit }, payload: Consumption) {
             commit('add', payload)
+        },
+        remove({ commit }, payload: String) {
+            commit('remove', payload)
         }
     }
 })

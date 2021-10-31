@@ -15,7 +15,7 @@
         <h6 class="mb-0">{{ beverage.name }}</h6>
         <p class="mb-0 opacity-75">
           {{ amount / 100 }}l {{ beverage.caffeine }}mg/100ml
-          {{ (amount / 100) * beverage.caffeine }}mg
+          {{ ((amount / 100) * beverage.caffeine).toFixed(2) }}mg
         </p>
       </div>
       <div class="row">
@@ -23,7 +23,7 @@
           <small class="opacity-50 text-nowrap">{{
             date.toLocaleString()
           }}</small>
-          <span>X</span>
+          <span @click="removeItem(id)">X</span>
         </div>
       </div>
     </div>
@@ -38,6 +38,14 @@ export default defineComponent({
     beverage: Object,
     amount: Number,
     date: Object,
+    id: String,
+  },
+  methods: {
+    removeItem(id: String) {
+      console.log("removing item", id);
+      this.$store.dispatch("remove", id);
+      this.$emit("removeConsumption", id);
+    },
   },
 });
 </script>
