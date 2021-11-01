@@ -6,7 +6,6 @@
       <div class="container-fluid">
         <router-link class="nav-link" to="/">Overview</router-link>
         <router-link class="nav-link" to="/add">Add</router-link>
-        <total-counter></total-counter>
       </div>
     </nav>
   </main>

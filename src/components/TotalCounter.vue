@@ -1,10 +1,12 @@
 <template>
-  <span v-if="totalFluids < 1000"
-    >{{ totalCaffeine }}mg with {{ totalFluids }}ml today</span
-  >
-  <span v-if="totalFluids >= 1000"
-    >{{ totalCaffeine }}mg with {{ totalFluids / 1000 }}l today</span
-  >
+  <div class="bg-info">
+    <span v-if="totalFluids < 1000"
+      >{{ totalCaffeine }}mg with {{ totalFluids }}ml today</span
+    >
+    <span v-if="totalFluids >= 1000"
+      >{{ totalCaffeine }}mg with {{ totalFluids / 1000 }}l today</span
+    >
+  </div>
 </template>
 
 <script lang="ts">

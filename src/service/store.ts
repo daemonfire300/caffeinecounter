@@ -20,7 +20,7 @@ export class BeverageStore {
         }
         const data = this.loadStore()
         data.push(c)
-        this.db.setItem("beverageStore", JSON.stringify(data))
+        this.setStore(data)
     }
 
     removeItem(id: String) {
@@ -28,7 +28,11 @@ export class BeverageStore {
         const newData = data.filter((val: Consumption): Boolean => {
             return val.id != id
         })
-        this.db.setItem("beverageStore", JSON.stringify(newData))
+        this.setStore(newData)
+    }
+
+    setStore(data: any) {
+        this.db.setItem("beverageStore", JSON.stringify(data))
     }
 
     loadStore(): Array<Consumption> {
@@ -50,7 +54,19 @@ export class BeverageStore {
         return store
     }
 
-    setStore(store: Array<Consumption>) {
-        this.db.setItem(this.storageKey, JSON.stringify(store))
+    loadConsumptionsOfDay(day?: Date): Array<Consumption> {
+        let targetDay: Date // sorry for this stupid extra variable and if/else
+        if (day == undefined) { // but the IDE complained about "day" being potentially undefined...
+            targetDay = new Date
+        } else {
+            targetDay = day
+        }
+        return this.loadStore().filter((val: Consumption): Boolean => {
+            const isToday: Boolean =
+                val.date.getDate() == targetDay.getDate() &&
+                val.date.getFullYear() == targetDay.getFullYear() &&
+                val.date.getMonth() == targetDay.getMonth()
+            return isToday
+        })
     }
 }

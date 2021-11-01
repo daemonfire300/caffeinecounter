@@ -48,23 +48,11 @@ const store = createStore({
             beverageStore.store(payload.amount, payload.beverage, payload.date)
             const data = beverageStore.loadStore()
             state.beverageData = data
-            state.totalFluids = data.reduce<number>((prev, curr): number => {
-                return prev + curr.amount;
-            }, 0)
-            state.totalCaffeine = data.reduce<number>((prev, curr): number => {
-                return prev + curr.beverage.caffeine;
-            }, 0)
         },
         remove(state: any, payload: String) {
             beverageStore.removeItem(payload)
             const data = beverageStore.loadStore()
             state.beverageData = data
-            /*state.totalFluids = data.reduce<number>((prev, curr): number => {
-                return prev + curr.amount;
-            }, 0)
-            state.totalCaffeine = data.reduce<number>((prev, curr): number => {
-                return prev + curr.beverage.caffeine;
-            }, 0)*/
         },
     },
     actions: {
