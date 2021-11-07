@@ -41,7 +41,7 @@ const store = createStore({
             return state.beverageData.reduce<number>((prev, curr): number => {
                 return prev + curr.beverage.caffeine;
             }, 0)
-        }
+        },
     },
     mutations: {
         add(state: any, payload: Consumption) {
@@ -54,6 +54,10 @@ const store = createStore({
             const data = beverageStore.loadStore()
             state.beverageData = data
         },
+        setDaily(state: any, payload: Date) {
+            const data = beverageStore.loadConsumptionsOfDay(payload)
+            state.beverageData = data
+        },
     },
     actions: {
         add({ commit }, payload: Consumption) {
@@ -61,7 +65,10 @@ const store = createStore({
         },
         remove({ commit }, payload: String) {
             commit('remove', payload)
-        }
+        },
+        loadDaily({ commit }, payload: Date) {
+            commit('setDaily', payload)
+        },
     }
 })
 app.use(store)
