@@ -6,7 +6,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <h1>Overview</h1>
+        <h1>{{ day }}</h1>
       </div>
       <div class="row">
         <div class="col">
@@ -24,14 +24,14 @@ import TotalCounter from "../components/TotalCounter.vue";
 
 @Options({
   components: { List, TotalCounter },
+  props: {
+    day: String,
+  },
   mounted() {
-    this.$store.dispatch("loadDaily", this.props.day ?? new Date());
+    //this.$store.dispatch("loadDaily", this.props.day ?? new Date());
   },
 })
-export default class DayView extends Vue {
-  msg!: string;
-  day!: Date;
-}
+export default class DayView extends Vue {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

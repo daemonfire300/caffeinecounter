@@ -8,7 +8,7 @@ export default createRouter({
     history: createWebHashHistory(),
     routes: [
         { path: "/", component: Overview },
-        { path: "/day/:day", component: DayView, props: true },
+        { name: "day", path: "/day/:day", component: DayView, props: true },
         { path: "/add", component: Add },
     ],
     linkActiveClass: "nav-link active",

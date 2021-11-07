@@ -1,5 +1,5 @@
 <template>
-  <div class="list-group">
+  <div class="list-group overflow-visible">
     <list-item
       v-for="(val, key) in consumedBeverages"
       :key="val.id"
