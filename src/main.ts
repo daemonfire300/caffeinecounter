@@ -7,6 +7,7 @@ import router from './router/router'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import * as bootstrap from 'bootstrap';
 import './assets/sidebar.css'
+import './assets/list-groups.css'
 
 
 declare module '@vue/runtime-core' {

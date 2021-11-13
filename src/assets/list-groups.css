@@ -17,6 +17,7 @@
   .list-group {
     width: auto;
     max-width: 460px;
+    max-height: 50%;
     margin: 4rem auto;
   }
   
@@ -42,7 +43,7 @@
     border-radius: .5rem;
   }
   .list-group-item-check {
-    position: absolute;
+    /*position: absolute;*/
     clip: rect(0, 0, 0, 0);
     pointer-events: none;
   }

@@ -28,7 +28,7 @@ import TotalCounter from "../components/TotalCounter.vue";
     day: String,
   },
   mounted() {
-    //this.$store.dispatch("loadDaily", this.props.day ?? new Date());
+    this.$store.dispatch("loadDaily", Date.parse(this.day) ?? new Date());
   },
 })
 export default class DayView extends Vue {}

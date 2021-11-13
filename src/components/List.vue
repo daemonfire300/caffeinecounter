@@ -1,5 +1,5 @@
 <template>
-  <div class="list-group overflow-visible">
+  <div class="list-group scrollarea">
     <list-item
       v-for="(val, key) in consumedBeverages"
       :key="val.id"
