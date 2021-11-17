@@ -6,7 +6,7 @@ import { Consumption } from './model/beverage'
 import router from './router/router'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import * as bootstrap from 'bootstrap';
-import './assets/sidebar.css'
+//import './assets/sidebar.css'
 import './assets/list-groups.css'
 import { reactiveStoreWithStorage } from './store/store'
 

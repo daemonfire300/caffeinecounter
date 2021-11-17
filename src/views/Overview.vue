@@ -1,12 +1,11 @@
 <template>
   <div class="container">
-    <div class="container">
+    <div class="container fixed-top">
       <div class="row"><total-counter></total-counter></div>
-      <hr />
     </div>
-    <div class="container">
+    <div class="container content">
       <div class="row">
-        <h1>Overview</h1>
+        <p>Overview</p>
       </div>
       <div class="row">
         <div class="col">
@@ -32,18 +31,19 @@ export default class Overview extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
 ul {
   list-style-type: none;
   padding: 0;
 }
 li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 a {
   color: #42b983;
+}
+
+.content {
+  margin-top: 1.8em;
 }
 </style>

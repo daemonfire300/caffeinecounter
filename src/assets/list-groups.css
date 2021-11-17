@@ -18,7 +18,7 @@
     width: auto;
     max-width: 460px;
     max-height: 50%;
-    margin: 4rem auto;
+    /* margin: 4rem auto;*/
   }
   
   .form-check-input:checked + .form-checked-content {
