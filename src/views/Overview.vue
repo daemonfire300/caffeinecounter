@@ -24,16 +24,6 @@ import TotalCounter from "../components/TotalCounter.vue";
 
 @Options({
   components: { List, TotalCounter },
-  data: () => {
-    return {
-      showAddForm: false,
-    };
-  },
-  methods: {
-    toggleAddForm() {
-      this.showAddForm = !this.showAddForm;
-    },
-  },
 })
 export default class Overview extends Vue {
   msg!: string;

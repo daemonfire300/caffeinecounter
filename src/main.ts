@@ -8,70 +8,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import * as bootstrap from 'bootstrap';
 import './assets/sidebar.css'
 import './assets/list-groups.css'
+import { reactiveStoreWithStorage } from './store/store'
 
 
-declare module '@vue/runtime-core' {
-    // declare your own store states
-    interface State {
-        beverageData: Array<Consumption>,
-        totalFluids: number,
-        totalCaffeine: number,
-    }
-
-    // provide typings for `this.$store`
-    interface ComponentCustomProperties {
-        $store: Store<State>
-    }
-}
 
 const app = createApp(App)
 const beverageStore = new BeverageStore(localStorage)
-const store = createStore({
-    state() {
-        return {
-            beverageData: beverageStore.loadStore(),
-        }
-    },
-    getters: {
-        totalFluids(state: State): number {
-            return state.beverageData.reduce<number>((prev, curr): number => {
-                return prev + curr.amount;
-            }, 0)
-        },
-        totalCaffeine(state: State): number {
-            return state.beverageData.reduce<number>((prev, curr): number => {
-                return prev + curr.beverage.caffeine;
-            }, 0)
-        },
-    },
-    mutations: {
-        add(state: any, payload: Consumption) {
-            beverageStore.store(payload.amount, payload.beverage, payload.date)
-            const data = beverageStore.loadStore()
-            state.beverageData = data
-        },
-        remove(state: any, payload: String) {
-            beverageStore.removeItem(payload)
-            const data = beverageStore.loadStore()
-            state.beverageData = data
-        },
-        setDaily(state: any, payload: Date) {
-            const data = beverageStore.loadConsumptionsOfDay(payload)
-            state.beverageData = data
-        },
-    },
-    actions: {
-        add({ commit }, payload: Consumption) {
-            commit('add', payload)
-        },
-        remove({ commit }, payload: String) {
-            commit('remove', payload)
-        },
-        loadDaily({ commit }, payload: Date) {
-            commit('setDaily', payload)
-        },
-    }
-})
-app.use(store)
+const reactiveStore = reactiveStoreWithStorage(beverageStore)
+
+app.use(reactiveStore)
 app.use(router)
 app.mount('#app')
