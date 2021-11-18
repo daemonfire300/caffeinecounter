@@ -5,7 +5,9 @@
     </div>
     <div class="container content">
       <div class="row">
-        <p>Overview</p>
+        <div class="col">
+          <p>Overview</p>
+        </div>
       </div>
       <div class="row">
         <div class="col">

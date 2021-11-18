@@ -1,5 +1,5 @@
 <template>
-  <div class="list-group scrollarea">
+  <div class="list-group">
     <list-item
       v-for="(val, key) in consumedBeverages"
       :key="val.id"
