@@ -10,6 +10,8 @@ declare module '@vue/runtime-core' {
     dailyBeverageData: Array<Consumption>,
     totalFluids: number,
     totalCaffeine: number,
+    dailyCaffeineLimitMg: number,
+    percentLimitReached: number,
   }
 
   // provide typings for `this.$store`
@@ -36,6 +38,7 @@ const reactiveStoreWithStorage = (beverageStore: BeverageStore): Store<State> =>
       return {
         beverageData: beverageStore.loadStore(),
         dailyBeverageData: new Array<Consumption>(),
+        dailyCaffeineLimitMg: 500,
       }
     },
     getters: {
@@ -51,6 +54,9 @@ const reactiveStoreWithStorage = (beverageStore: BeverageStore): Store<State> =>
       dailyTotalCaffeine(state: State): number {
         return computeTotalCaffeine(state.dailyBeverageData)
       },
+      percentLimitReached(state: State): number {
+        return computeTotalCaffeine(state.dailyBeverageData) / state.dailyCaffeineLimitMg
+      }
     },
     mutations: {
       add(state: any, payload: Consumption) {

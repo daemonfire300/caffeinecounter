@@ -1,5 +1,7 @@
 <template>
   <div class="bg-info">
+    <span>{{ percentLimitReached }}% of daily limit</span>
+    /
     <span v-if="totalFluids < 1000"
       >{{ totalCaffeine }}mg with {{ totalFluids }}ml today</span
     >
@@ -15,10 +17,13 @@ import { defineComponent } from "vue";
 export default defineComponent({
   computed: {
     totalCaffeine(): number {
-      return this.$store.getters.totalCaffeine;
+      return this.$store.getters.dailyTotalCaffeine;
     },
     totalFluids(): number {
-      return this.$store.getters.totalFluids;
+      return this.$store.getters.dailyTotalFluids;
+    },
+    percentLimitReached(): number {
+      return this.$store.getters.percentLimitReached;
     },
   },
 });
