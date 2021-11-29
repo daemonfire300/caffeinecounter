@@ -48,15 +48,13 @@ export function Plot(anchorNode: string, data: Array<DataPoint2D>) {
     let pointsGroup = plotGroup.append('g')
         .classed('points', true);
 
-    let [minExtX, maxExtX] = d3.extent(data, d => d.xValue);
-    minExtX = minExtX ?? new Date();
-    maxExtX = maxExtX ?? new Date();
-    let extY = d3.extent(data, d => d.yValue);
-    xScale.domain([minExtX, maxExtX])
+    let extX = (d3.extent(data, d => d.xValue));
+    xScale.domain([extX[0] ?? new Date(), extX[1] ?? new Date()])
         .nice();
     xAxisGroup.call(xAxis);
 
-    yScale.domain(extY)
+    let extY = d3.extent(data, d => d.yValue);
+    yScale.domain([extY[0] ?? 0, extY[1] ?? 0])
         .nice();
     yAxisGroup.call(yAxis);
 }
