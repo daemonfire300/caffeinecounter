@@ -10,7 +10,9 @@
         </div>
       </div>
       <div class="row">
-        <donut></donut>
+        <div class="chart">
+          <chart></chart>
+        </div>
       </div>
       <div class="row">
         <div class="col">
@@ -24,11 +26,11 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import List from "../components/List.vue";
-import Donut from "../components/Donut.vue";
+import Chart from "../components/Chart.vue";
 import TotalCounter from "../components/TotalCounter.vue";
 
 @Options({
-  components: { List, TotalCounter, Donut },
+  components: { List, TotalCounter, Chart },
 })
 export default class Overview extends Vue {
   msg!: string;

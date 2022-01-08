@@ -6,59 +6,59 @@ export interface DataPoint2D {
     yValue: number
 }
 
-export function Plot(anchorNode: string, data: Array<DataPoint2D>) {
-    const width = 960;
-    const height = 480;
+export function Plot(anchorNode: any, data: Array<DataPoint2D>) {
+    const width = 200;
+    const height = 100;
 
-    let svg = d3.select(anchorNode)
+    const svg = d3.select(anchorNode)
         .append<SVGElement>('svg')
         .attr('width', width)
         .attr('height', height);
 
-    let plotMargins = {
-        top: 30,
+    const plotMargins = {
+        top: 10,
         bottom: 30,
-        left: 150,
-        right: 30
+        left: 30,
+        right: 10
     };
-    let plotGroup = svg.append<SVGGElement>('g')
+    const plotGroup = svg.append<SVGGElement>('g')
         .classed('plot', true)
         .attr('transform', `translate(${plotMargins.left},${plotMargins.top})`);
 
-    let plotWidth = width - plotMargins.left - plotMargins.right;
-    let plotHeight = height - plotMargins.top - plotMargins.bottom;
+    const plotWidth = width - plotMargins.left - plotMargins.right;
+    const plotHeight = height - plotMargins.top - plotMargins.bottom;
 
-    let xScale = d3.scaleTime()
+    const xScale = d3.scaleTime()
         .range([0, plotWidth]);
-    let xAxis = d3.axisBottom(xScale);
-    let xAxisGroup = plotGroup.append<SVGGElement>('g')
+    const xAxis = d3.axisBottom(xScale);
+    const xAxisGroup = plotGroup.append<SVGGElement>('g')
         .classed('x', true)
         .classed('axis', true)
         .attr('transform', `translate(${0},${plotHeight})`)
         .call(xAxis);
 
-    let yScale = d3.scaleLinear()
+    const yScale = d3.scaleLinear()
         .range([plotHeight, 0]);
-    let yAxis = d3.axisLeft(yScale);
-    let yAxisGroup = plotGroup.append<SVGGElement>('g')
+    const yAxis = d3.axisLeft(yScale);
+    const yAxisGroup = plotGroup.append<SVGGElement>('g')
         .classed('y', true)
         .classed('axis', true)
         .call(yAxis);
 
-    let pointsGroup = plotGroup.append<SVGGElement>('g')
+    const pointsGroup = plotGroup.append<SVGGElement>('g')
         .classed('points', true);
 
-    let extX = (d3.extent(data, d => d.xValue));
+    const extX = (d3.extent(data, d => d.xValue));
     xScale.domain([extX[0] ?? new Date(), extX[1] ?? new Date()])
         .nice();
     xAxisGroup.call(xAxis);
 
-    let extY = d3.extent(data, d => d.yValue);
+    const extY = d3.extent(data, d => d.yValue);
     yScale.domain([extY[0] ?? 0, extY[1] ?? 0])
         .nice();
     yAxisGroup.call(yAxis);
 
-    let dataBound = pointsGroup.selectAll<SVGGElement, unknown>('.post')
+    const dataBound = pointsGroup.selectAll<SVGGElement, unknown>('.post')
         .data<DataPoint2D>(data);
 
     // delete extra points
@@ -67,7 +67,7 @@ export function Plot(anchorNode: string, data: Array<DataPoint2D>) {
         .remove();
 
     // add new points
-    let enterSelection = dataBound
+    const enterSelection = dataBound
         .enter()
         .append<SVGGElement>('g')
         .classed('post', true);
@@ -75,4 +75,7 @@ export function Plot(anchorNode: string, data: Array<DataPoint2D>) {
     // update all existing points
     enterSelection.merge(dataBound)
         .attr('transform', (d) => `translate(${xScale(d.xValue)},${yScale(d.yValue)})`);
+    enterSelection.append('circle')
+        .attr('r', 2)
+        .style('fill', 'red');
 }
